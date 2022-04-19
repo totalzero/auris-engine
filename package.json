@@ -1,0 +1,11 @@
+{
+  "name": "auris-engine",
+  "version": "1.0.0",
+  "description": "simple game engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "totalzero",
+  "license": "ISC"
+}

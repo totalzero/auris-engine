@@ -1,10 +1,16 @@
 import Room from "../src/obj/Room"
 import { Floors } from "../src/obj/Floors"
+import GameObj from "../src/obj/GameObj"
 
 const loc = new Room()  
 
 function newRoom(): Room {
   return new Room()
+}
+
+function newObject(): GameObj {
+  class TestObject extends GameObj {}
+  return new TestObject()
 }
 
 test('after initialisation Room.Name field should be not defined', () => {
@@ -65,4 +71,23 @@ test('checking set exit to room', () => {
   const rm = newRoom()
 rm.Exits.north = new Room()
 expect(rm.Exits.north).toBeDefined()
+})
+
+test('add object to Room.objects', () => {
+  const rm = newRoom()
+rm.AddObject(newObject(), newObject(), newObject())
+  expect(rm.Objects.length).toBe(3)
+})
+
+test('get objects with concrete coordinates', () => {
+  const obj1 = newObject()
+const obj2 = newObject()
+  const obj3 = newObject()
+  obj1.X = obj1.Y  = obj2.X = obj2.Y = 1
+  obj3.X = 2
+  obj3.Y = 1
+  const rm = newRoom()
+  rm.AddObject(obj1, obj2)
+  rm.AddObject(obj3)
+  expect(rm.getObject(1, 1)).toStrictEqual([obj1, obj2])
 })

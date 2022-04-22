@@ -27,8 +27,10 @@ set Description(desc: string) {
     this._desc = desc
 }
 
-AddObj(obj: GameObj) {
-    this._objects.push(obj)
+AddObject(...obj: GameObj[]) {
+    for (let i of obj) {
+this._objects.push(i)
+    }
 }
 
 get Objects(): GameObj[] {

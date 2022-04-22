@@ -5,9 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Room_1 = __importDefault(require("../src/obj/Room"));
 const Floors_1 = require("../src/obj/Floors");
+const GameObj_1 = __importDefault(require("../src/obj/GameObj"));
 const loc = new Room_1.default();
 function newRoom() {
     return new Room_1.default();
+}
+function newObject() {
+    class TestObject extends GameObj_1.default {
+    }
+    return new TestObject();
 }
 test('after initialisation Room.Name field should be not defined', () => {
     expect(loc.Name.length).toBe(0);
@@ -57,4 +63,21 @@ test('checking set exit to room', () => {
     const rm = newRoom();
     rm.Exits.north = new Room_1.default();
     expect(rm.Exits.north).toBeDefined();
+});
+test('add object to Room.objects', () => {
+    const rm = newRoom();
+    rm.AddObject(newObject(), newObject(), newObject());
+    expect(rm.Objects.length).toBe(3);
+});
+test('get objects with concrete coordinates', () => {
+    const obj1 = newObject();
+    const obj2 = newObject();
+    const obj3 = newObject();
+    obj1.X = obj1.Y = obj2.X = obj2.Y = 1;
+    obj3.X = 2;
+    obj3.Y = 1;
+    const rm = newRoom();
+    rm.AddObject(obj1, obj2);
+    rm.AddObject(obj3);
+    expect(rm.getObject(1, 1)).toStrictEqual([obj1, obj2]);
 });

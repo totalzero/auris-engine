@@ -23,8 +23,10 @@ class Room {
     set Description(desc) {
         this._desc = desc;
     }
-    AddObj(obj) {
-        this._objects.push(obj);
+    AddObject(...obj) {
+        for (let i of obj) {
+            this._objects.push(i);
+        }
     }
     get Objects() {
         return this._objects;

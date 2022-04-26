@@ -64,7 +64,7 @@ this._floor = floor
 }
 
 getFloor(x: number, y: number): Floors {
-    return this._floor[x][y]
+    return this._floor[y][x]
 }
 
 get Exits(): Exits {

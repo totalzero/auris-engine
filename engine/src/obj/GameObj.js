@@ -6,6 +6,9 @@ class GameObj {
         this._desc = "";
         this._x = 0;
         this._y = 0;
+        this._ofens = 0;
+        this._defens = 0;
+        this._level = 0;
     }
     get Name() {
         return this._name;
@@ -30,6 +33,24 @@ class GameObj {
     }
     set Y(y) {
         this._y = y;
+    }
+    get Offensive() {
+        return this._ofens;
+    }
+    set Offensive(ofens) {
+        this._ofens = ofens;
+    }
+    get Defensive() {
+        return this._defens;
+    }
+    set Defensive(def) {
+        this._defens = def;
+    }
+    get Level() {
+        return this._level;
+    }
+    set Level(level) {
+        this._level = level;
     }
 }
 exports.default = GameObj;

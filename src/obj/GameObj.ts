@@ -1,8 +1,11 @@
 export default abstract class GameObj {
- private _name: string = ""
-private _desc: string = ""
-private _x: number = 0
-private _y: number = 0
+ protected _name: string = ""
+protected _desc: string = ""
+protected _x: number = 0
+protected _y: number = 0
+protected _ofens: number = 0
+protected _defens: number = 0
+protected _level: number = 0
 
 get Name(): string {
     return this._name
@@ -34,5 +37,29 @@ get Y():number {
 
 set Y(y:number) {
     this._y = y
+}
+
+get Offensive(): number {
+    return this._ofens
+}
+
+set Offensive(ofens: number) {
+    this._ofens = ofens
+}
+
+get Defensive(): number {
+    return this._defens
+}
+
+set Defensive(def: number) {
+    this._defens = def
+}
+
+get Level(): number {
+    return this._level
+}
+
+set Level(level: number) {
+    this._level = level
 }
 }

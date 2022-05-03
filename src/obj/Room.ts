@@ -7,6 +7,7 @@ private _name: string= ""
 private _desc: string = ""
 private _exits: Exits = {}
 private _objects: GameObj[] = []
+private _respawn: GameObj[] = []
 private _floor: Floors[][] = [[Floors.none, Floors.none, Floors.none],
 [Floors.none, Floors.none, Floors.none],
 [Floors.none, Floors.none, Floors.none]]
@@ -30,6 +31,8 @@ set Description(desc: string) {
 AddObject(...obj: GameObj[]) {
     for (let i of obj) {
 this._objects.push(i)
+if (i.isRespawn)
+this._respawn.push(i)
     }
 }
 
@@ -44,6 +47,15 @@ getObject(x: number, y: number): GameObj[] {
  obj.push(element)
  }
  return obj
+}
+
+removeObject(obj: GameObj) {
+    let arr = []
+    for(let element of this._objects) {
+        if (element != obj)
+        arr.push(element)
+    }
+    this._objects = arr
 }
 
 get Floors(): Floors[][] {
@@ -73,5 +85,13 @@ get Exits(): Exits {
 
 set Exits(exit: Exits) {
     this._exits = exit
+}
+
+Update() {
+ for (let i of this._respawn)   {
+     if (! this._objects.includes(i))
+ this.AddObject (Reflect.construct(i.constructor, []))
+ }
+
 }
 }

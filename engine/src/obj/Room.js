@@ -7,6 +7,7 @@ class Room {
         this._desc = "";
         this._exits = {};
         this._objects = [];
+        this._respawn = [];
         this._floor = [[Floors_1.Floors.none, Floors_1.Floors.none, Floors_1.Floors.none],
             [Floors_1.Floors.none, Floors_1.Floors.none, Floors_1.Floors.none],
             [Floors_1.Floors.none, Floors_1.Floors.none, Floors_1.Floors.none]];
@@ -26,6 +27,8 @@ class Room {
     AddObject(...obj) {
         for (let i of obj) {
             this._objects.push(i);
+            if (i.isRespawn)
+                this._respawn.push(i);
         }
     }
     get Objects() {
@@ -38,6 +41,14 @@ class Room {
                 obj.push(element);
         }
         return obj;
+    }
+    removeObject(obj) {
+        let arr = [];
+        for (let element of this._objects) {
+            if (element != obj)
+                arr.push(element);
+        }
+        this._objects = arr;
     }
     get Floors() {
         return this._floor;
@@ -60,6 +71,12 @@ class Room {
     }
     set Exits(exit) {
         this._exits = exit;
+    }
+    Update() {
+        for (let i of this._respawn) {
+            if (!this._objects.includes(i))
+                this.AddObject(Reflect.construct(i.constructor, []));
+        }
     }
 }
 exports.default = Room;

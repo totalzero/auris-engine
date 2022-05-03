@@ -15,6 +15,15 @@ addEquipment(... items: Item[]) {
     this.Equipment.push(element)
 }
 
+removeEquipment(item: Item) {
+    let arr = []
+    for (let element of this._equipment) {
+        if (element != item)
+        arr.push(element)
+    }
+    this._equipment = arr
+}
+
 get HP(): number {
     return this._hp
 }

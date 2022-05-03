@@ -95,3 +95,13 @@ test('when npc.goWest and npc.X is 0 then npc.X should be 0', () => {
     npc.goWest();
     expect(npc.X).toBe(0);
 });
+test('remove item from equipment', () => {
+    const mob = newNpc();
+    const it1 = new Item_1.default();
+    const it2 = new Item_1.default();
+    const it3 = new Item_1.default();
+    mob.addEquipment(it1, it2, it3);
+    mob.removeEquipment(it2);
+    expect(mob.Equipment.length).toBe(2);
+    expect(mob.Equipment.includes(it2)).toBe(false);
+});

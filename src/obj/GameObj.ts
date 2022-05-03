@@ -6,6 +6,8 @@ protected _y: number = 0
 protected _ofens: number = 0
 protected _defens: number = 0
 protected _level: number = 0
+protected _respawn: boolean = true
+
 
 get Name(): string {
     return this._name
@@ -62,4 +64,13 @@ get Level(): number {
 set Level(level: number) {
     this._level = level
 }
+
+get isRespawn(): boolean {
+    return this._respawn
 }
+
+set Respawn(res: boolean) {
+    this._respawn = res
+}
+}
+

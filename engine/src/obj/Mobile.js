@@ -17,6 +17,14 @@ class Mobile extends GameObj_1.default {
         for (let element of items)
             this.Equipment.push(element);
     }
+    removeEquipment(item) {
+        let arr = [];
+        for (let element of this._equipment) {
+            if (element != item)
+                arr.push(element);
+        }
+        this._equipment = arr;
+    }
     get HP() {
         return this._hp;
     }

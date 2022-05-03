@@ -111,3 +111,14 @@ test('when npc.goEast and npc.W is 2 then npc.w == 2', () => {
       npc.goWest()  
       expect(npc.X).toBe(0)
     })
+
+    test('remove item from equipment', () => {
+      const mob = newNpc()
+      const it1 = new Item()
+      const it2 = new Item()
+      const it3 = new Item()
+      mob.addEquipment(it1, it2, it3)
+      mob.removeEquipment(it2)
+      expect(mob.Equipment.length).toBe(2)
+      expect(mob.Equipment.includes(it2)).toBe(false)
+    })

@@ -81,3 +81,25 @@ test('get objects with concrete coordinates', () => {
     rm.AddObject(obj3);
     expect(rm.getObject(1, 1)).toStrictEqual([obj1, obj2]);
 });
+test('deleting object from room.objects', () => {
+    const room = newRoom();
+    const obj1 = newObject();
+    const obj2 = newObject();
+    const obj3 = newObject();
+    room.AddObject(obj1, obj2, obj3);
+    room.removeObject(obj2);
+    expect(room.Objects.length).toBe(2);
+    expect(room.Objects.includes(obj2)).toBe(false);
+});
+test('testing respawn', () => {
+    const rm = newRoom();
+    const it1 = newObject();
+    const it2 = newObject();
+    const it3 = newObject();
+    rm.AddObject(it1, it2, it3);
+    expect(rm.Objects.length).toBe(3);
+    rm.removeObject(it2);
+    expect(rm.Objects.includes(it2)).toBe(false);
+    rm.Update();
+    expect(rm.Objects.length).toBe(3);
+});

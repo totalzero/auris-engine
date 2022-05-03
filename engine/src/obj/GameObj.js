@@ -9,6 +9,7 @@ class GameObj {
         this._ofens = 0;
         this._defens = 0;
         this._level = 0;
+        this._respawn = true;
     }
     get Name() {
         return this._name;
@@ -51,6 +52,12 @@ class GameObj {
     }
     set Level(level) {
         this._level = level;
+    }
+    get isRespawn() {
+        return this._respawn;
+    }
+    set Respawn(res) {
+        this._respawn = res;
     }
 }
 exports.default = GameObj;

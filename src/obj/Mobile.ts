@@ -52,5 +52,5 @@ goWest() {
  this.X -= 1
 }
 
-
+Update(){}
 }

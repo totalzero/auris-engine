@@ -3,10 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Room_1 = __importDefault(require("../src/obj/Room"));
 const Player_1 = __importDefault(require("../src/Player"));
 function newPlayer() {
     return new Player_1.default();
 }
+test('begin initialisation Player.Instance returned undefined', () => {
+    expect(Player_1.default.Instance).toBeUndefined();
+});
 test('after initialise player.experience should be 0', () => {
     expect(newPlayer().Experience).toBe(0);
 });
@@ -41,4 +45,12 @@ test('set player.Money', () => {
     const player = newPlayer();
     player.Money = 100;
     expect(player.Money).toBe(100);
+});
+test('after initialisation player.Room should be undefined', () => {
+    expect(newPlayer().Room).toBeUndefined();
+});
+test('set player.room', () => {
+    const player = newPlayer();
+    player.Room = new Room_1.default();
+    expect(player.Room).toBeDefined();
 });

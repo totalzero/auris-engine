@@ -6,12 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Mobile_1 = __importDefault(require("./obj/Mobile"));
 class Player extends Mobile_1.default {
     constructor() {
-        super(...arguments);
+        super();
         this._exp = 0;
         this._skillPoints = 100;
         this._maxSkillPoints = 100;
         this._maxHP = 100;
         this._money = 0;
+        Player.Instance = this;
     }
     get Experience() {
         return this._exp;
@@ -42,6 +43,12 @@ class Player extends Mobile_1.default {
     }
     set Money(money) {
         this._money = money;
+    }
+    get Room() {
+        return this._actuallRoom;
+    }
+    set Room(room) {
+        this._actuallRoom = room;
     }
 }
 exports.default = Player;

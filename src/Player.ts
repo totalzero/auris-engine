@@ -1,11 +1,20 @@
 import Mobile from "./obj/Mobile";
+import Room from "./obj/Room";
 
 export default class Player extends Mobile {
+    static Instance?: Player
  protected _exp: number = 0
  protected _skillPoints: number = 100
  protected _maxSkillPoints: number = 100   
  protected _maxHP:number = 100
 protected _money: number = 0
+protected _actuallRoom?: Room
+
+constructor() {
+    super()
+    this.Respawn = false
+    Player.Instance = this
+}
 
  get Experience(): number {
      return this._exp
@@ -46,4 +55,14 @@ get Money(): number {
 set Money(money: number) {
     this._money = money
 }
+
+get Room(): Room | undefined {
+    return this._actuallRoom
+}
+
+set Room(room: Room | undefined) {
+    this._actuallRoom = room
+}
+
+
 }

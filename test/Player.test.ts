@@ -1,8 +1,14 @@
+import Room from "../src/obj/Room";
 import Player from "../src/Player";
 
 function newPlayer(): Player {
     return new Player()
 }
+
+
+test('begin initialisation Player.Instance returned undefined', () => {
+    expect(Player.Instance).toBeUndefined()
+})
 
 test('after initialise player.experience should be 0', () => {
     expect(newPlayer().Experience).toBe(0)
@@ -46,4 +52,14 @@ test('set player.Money', () => {
     const player = newPlayer()
     player.Money = 100
     expect(player.Money).toBe(100)
+})
+
+test('after initialisation player.Room should be undefined', () => {
+  expect(newPlayer().Room).toBeUndefined()
+})
+
+test('set player.room', () => {
+    const player = newPlayer()
+    player.Room = new Room()
+    expect(player.Room).toBeDefined()
 })

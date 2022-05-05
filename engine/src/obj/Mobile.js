@@ -9,6 +9,7 @@ class Mobile extends GameObj_1.default {
         super(...arguments);
         this._equipment = [];
         this._hp = 100;
+        this._move = true;
     }
     get Equipment() {
         return this._equipment;
@@ -31,21 +32,37 @@ class Mobile extends GameObj_1.default {
     set HP(hp) {
         this._hp = hp;
     }
+    get Move() {
+        return this._move;
+    }
+    set Move(mv) {
+        this._move = mv;
+    }
     goNorth() {
-        if (this.Y < 2)
-            this.Y += 1;
+        if (this.Move)
+            if (this.Y < 2)
+                this.Y += 1;
     }
     goSouth() {
-        if (this.Y > 0)
-            this.Y -= 1;
+        if (this.Move)
+            if (this.Y > 0)
+                this.Y -= 1;
     }
     goEast() {
-        if (this.X < 2)
-            this.X += 1;
+        if (this.Move)
+            if (this.X < 2)
+                this.X += 1;
     }
     goWest() {
-        if (this.X > 0)
-            this.X -= 1;
+        if (this.Move)
+            if (this.X > 0)
+                this.X -= 1;
+    }
+    Update() { }
+    getInfo() {
+        return `${this.Name}.
+${this.Description}.
+level: ${this.Level}`;
     }
 }
 exports.default = Mobile;

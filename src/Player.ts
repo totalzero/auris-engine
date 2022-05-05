@@ -64,5 +64,7 @@ set Room(room: Room | undefined) {
     this._actuallRoom = room
 }
 
-
+Update(): void {
+    
+}
 }

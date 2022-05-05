@@ -122,3 +122,10 @@ test('when npc.goEast and npc.W is 2 then npc.w == 2', () => {
       expect(mob.Equipment.length).toBe(2)
       expect(mob.Equipment.includes(it2)).toBe(false)
     })
+
+    test('mobile cant move', () => {
+      const npc = newNpc()
+      npc.Move = false
+      npc.goNorth()
+      expect(npc.Y).toBe(0)
+    })

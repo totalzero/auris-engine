@@ -12,6 +12,7 @@ class Player extends Mobile_1.default {
         this._maxSkillPoints = 100;
         this._maxHP = 100;
         this._money = 0;
+        this.Respawn = false;
         Player.Instance = this;
     }
     get Experience() {

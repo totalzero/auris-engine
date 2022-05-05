@@ -7,7 +7,7 @@ protected _ofens: number = 0
 protected _defens: number = 0
 protected _level: number = 0
 protected _respawn: boolean = true
-
+protected _use: any = undefined
 
 get Name(): string {
     return this._name
@@ -71,6 +71,13 @@ get isRespawn(): boolean {
 
 set Respawn(res: boolean) {
     this._respawn = res
+}
+
+getInfo(): String {
+    return 'no information'
+}
+get Use(): any {
+    return this._use
 }
 }
 

@@ -11,4 +11,12 @@ export default class Item extends GameObj {
  set Value(value: number) {
      this._value = value
  }
+
+ getInfo(): String {
+     return `${this.Name}.
+     ${this.Description}.
+     ${this.Offensive}.
+     ${this.Defensive}.
+     ${this.Value}`
+ }
 }

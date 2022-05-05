@@ -15,5 +15,12 @@ class Item extends GameObj_1.default {
     set Value(value) {
         this._value = value;
     }
+    getInfo() {
+        return `${this.Name}.
+     ${this.Description}.
+     ${this.Offensive}.
+     ${this.Defensive}.
+     ${this.Value}`;
+    }
 }
 exports.default = Item;

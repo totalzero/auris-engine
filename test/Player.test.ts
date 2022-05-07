@@ -1,8 +1,14 @@
 import Room from "../src/obj/Room";
-import Player from "../src/Player";
+import Skill from "../src/obj/Skill";
+import Player from "../src/std/Player";
 
 function newPlayer(): Player {
     return new Player()
+}
+
+function newSkill(): Skill {
+    class testSkill extends Skill {}
+    return new testSkill()
 }
 
 
@@ -61,5 +67,17 @@ test('after initialisation player.Room should be undefined', () => {
 test('set player.room', () => {
     const player = newPlayer()
     player.Room = new Room()
+    
     expect(player.Room).toBeDefined()
+})
+
+test('after initialisation player should be empty skills', () => {
+    expect(newPlayer().Skills.skill1).toBeUndefined()
+})
+
+test('set new skill to player.skills', () => {
+    const skil = newSkill()
+    const player = newPlayer()
+    player.Skills.skill1 = skil
+    expect(player.Skills.skill1).toBe(skil)
 })

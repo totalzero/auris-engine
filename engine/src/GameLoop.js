@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Mobile_1 = __importDefault(require("./obj/Mobile"));
-const Player_1 = __importDefault(require("./Player"));
+const Player_1 = __importDefault(require("./std/Player"));
 class GameLoop {
     constructor() {
         this._mobileLoop = undefined;

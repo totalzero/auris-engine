@@ -4,9 +4,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Room_1 = __importDefault(require("../src/obj/Room"));
-const Player_1 = __importDefault(require("../src/Player"));
+const Skill_1 = __importDefault(require("../src/obj/Skill"));
+const Player_1 = __importDefault(require("../src/std/Player"));
 function newPlayer() {
     return new Player_1.default();
+}
+function newSkill() {
+    class testSkill extends Skill_1.default {
+    }
+    return new testSkill();
 }
 test('begin initialisation Player.Instance returned undefined', () => {
     expect(Player_1.default.Instance).toBeUndefined();
@@ -53,4 +59,13 @@ test('set player.room', () => {
     const player = newPlayer();
     player.Room = new Room_1.default();
     expect(player.Room).toBeDefined();
+});
+test('after initialisation player should be empty skills', () => {
+    expect(newPlayer().Skills.skill1).toBeUndefined();
+});
+test('set new skill to player.skills', () => {
+    const skil = newSkill();
+    const player = newPlayer();
+    player.Skills.skill1 = skil;
+    expect(player.Skills.skill1).toBe(skil);
 });

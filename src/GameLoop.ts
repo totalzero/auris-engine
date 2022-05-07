@@ -1,5 +1,5 @@
 import Mobile from "./obj/Mobile"
-import Player from "./Player"
+import Player from "./std/Player"
 
 export default class GameLoop {
     protected _mobileLoop: any = undefined

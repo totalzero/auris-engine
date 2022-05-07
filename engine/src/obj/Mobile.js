@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const random_1 = require("../random");
 const GameObj_1 = __importDefault(require("./GameObj"));
 class Mobile extends GameObj_1.default {
     constructor() {
@@ -58,7 +59,26 @@ class Mobile extends GameObj_1.default {
             if (this.X > 0)
                 this.X -= 1;
     }
-    Update() { }
+    Update() {
+        if ((0, random_1.randomBoolean)()) {
+            switch ((0, random_1.randomInteger)(1, 4)) {
+                case 1:
+                    this.goNorth();
+                    break;
+                case 2:
+                    this.goEast();
+                    break;
+                case 3:
+                    this.goSouth();
+                    break;
+                case 4:
+                    this.goWest();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     getInfo() {
         return `${this.Name}.
 ${this.Description}.

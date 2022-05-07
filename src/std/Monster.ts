@@ -1,4 +1,4 @@
-import Mobile from "./obj/Mobile";
+import Mobile from "../obj/Mobile";
 
 export default class Monster extends Mobile {
  protected _aggresive: boolean = true

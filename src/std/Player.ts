@@ -1,5 +1,10 @@
-import Mobile from "./obj/Mobile";
-import Room from "./obj/Room";
+import Mobile from "../obj/Mobile";
+import Room from "../obj/Room";
+import Skill from "../obj/Skill";
+import Armor from "./Armor";
+import Helmet from "./Helmet";
+import Shoes from "./Shoes";
+import Weapon from "./Weapon";
 
 export default class Player extends Mobile {
     static Instance?: Player
@@ -8,12 +13,22 @@ export default class Player extends Mobile {
  protected _maxSkillPoints: number = 100   
  protected _maxHP:number = 100
 protected _money: number = 0
+protected _slots: Slots = {}
 protected _actuallRoom?: Room
+protected _skills: Skills = {}
 
 constructor() {
     super()
     this.Respawn = false
     Player.Instance = this
+}
+
+get Slots(): Slots {
+    return this._slots
+}
+
+set Slots(slot: Slots) {
+    this._slots = slot
 }
 
  get Experience(): number {
@@ -64,7 +79,28 @@ set Room(room: Room | undefined) {
     this._actuallRoom = room
 }
 
+get Skills(): Skills {
+    return this._skills
+}
+
 Update(): void {
+ if (this.SkillPoints < this.MaxSkillPoints)   
+ this.SkillPoints += 1
+}
+}
+
+interface Slots {
+    "weapon"?: Weapon,
+"helmet"?: Helmet,
+"armor"?: Armor,
+"shoes"?: Shoes,
     
 }
+
+interface Skills {
+    "skill1"?: Skill,
+    "skill2"?: Skill,
+"skill3"?: Skill,
+"skill4"? : Skill,
+"skill5"? : Skill
 }

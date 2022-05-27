@@ -11,6 +11,7 @@ class GameObj {
         this._level = 0;
         this._respawn = true;
         this._use = undefined;
+        this._canPickup = false;
     }
     get Name() {
         return this._name;
@@ -65,6 +66,12 @@ class GameObj {
     }
     get Use() {
         return this._use;
+    }
+    get canPickup() {
+        return this._canPickup;
+    }
+    set canPickup(pickup) {
+        this._canPickup = pickup;
     }
 }
 exports.default = GameObj;

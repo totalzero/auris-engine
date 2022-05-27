@@ -8,6 +8,8 @@ protected _defens: number = 0
 protected _level: number = 0
 protected _respawn: boolean = true
 protected _use: any = undefined
+protected _canPickup: boolean = false
+
 
 get Name(): string {
     return this._name
@@ -78,6 +80,14 @@ getInfo(): String {
 }
 get Use(): any {
     return this._use
+}
+
+get canPickup(): boolean {
+    return this._canPickup
+}
+
+set canPickup(pickup: boolean) {
+    this._canPickup = pickup
 }
 }
 

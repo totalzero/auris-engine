@@ -1,6 +1,6 @@
 {
   "name": "auris-engine",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "simple game engine",
   "main": "./engine/index.js",
   "scripts": {

@@ -3,6 +3,11 @@ import GameObj from "./GameObj";
 export default class Item extends GameObj {
  protected _value: number = 0  
 
+constructor() {
+    super()
+    this._canPickup = true
+}
+
  get Value(): number {
      return this._value
  }

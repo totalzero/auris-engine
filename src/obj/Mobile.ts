@@ -8,6 +8,11 @@ protected _equipment: Item[] = []
 protected _hp: number = 100
 protected _move: boolean = true
 
+constructor() {
+    super()
+    this._canPickup = false
+}
+
 get Equipment(): Item[] {
     return this._equipment
 }
